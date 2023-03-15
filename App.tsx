@@ -38,6 +38,9 @@ import Login from './ChatScreen/Login';
 import Signup from './ChatScreen/Signup';
 import Home from './ChatScreen/Home';
 import { async } from '@firebase/util';
+import HomeScreen from './src/Screens/Home';
+import BottomTabNav from './src/router/bottomTabNav';
+import Splash from './ChatScreen/Splash';
 
 const Stack = createStackNavigator();
 const AuthenticatedUserContext = createContext({});
@@ -59,7 +62,7 @@ return(
 };
 // ChatStack Navigation
 
-const ChatStack = () => {
+function ChatStack  ()  {
 
 return (
 
@@ -74,12 +77,14 @@ return (
 
 
 function AuthStack  () {
-
+  const [isLoading, setIsLoading] = useState(true);
   return(
-    <Stack.Navigator>
+    
+    isLoading ? <Splash setIsLoading={setIsLoading} /> :
+    <Stack.Navigator screenOptions={{headerShown:false}}>
 
-    <Stack.Screen name="Login" component={Login}/>
-    <Stack.Screen name="Signup" component={Signup}/>
+    <Stack.Screen name="Login" component={Login} />
+    <Stack.Screen name="Signup" component={Signup} />
 
   </Stack.Navigator>
   )
@@ -88,7 +93,7 @@ function AuthStack  () {
 
 
 
-const RootNavigator = () => {
+function RootNavigator  () {
   const { user, setUser } = useContext(AuthenticatedUserContext);
   const [isLoading, setIsLoading] = useState(true);
 useEffect(() => {
@@ -116,6 +121,7 @@ if (isLoading) {
 
 return (
     <NavigationContainer>
+
       {user ? <ChatStack /> : <AuthStack />}
     </NavigationContainer>
   );
@@ -128,14 +134,21 @@ return (
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
+  
+  //isLoading ? <Splash setIsLoading={setIsLoading} /> : <AuthStack />
+  
+  
+  
+  
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
     
+     
     <AuthenticatedUserProvider>
-
+     
         <RootNavigator />
 
     </AuthenticatedUserProvider>      

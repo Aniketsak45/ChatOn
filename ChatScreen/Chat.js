@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, useLayoutEffect, useCallback } from "react";
 import { collection, addDoc, orderBy, query, onSnapshot } from "firebase/firestore";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Pressable } from "react-native";
 import { signOut } from "firebase/auth";
 import { auth, database, } from "./config/firebase";
 import { useNavigation } from "@react-navigation/native";
@@ -9,13 +9,16 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import {GiftedChat
 } from "react-native-gifted-chat";
 
-const  Chat = () =>  {
+function  Chat  ()   {
 
    const [messages, setMessages] = useState([]);
    const navigation = useNavigation();
 
  const onSignOut = () => {
-     signOut(auth).catch(error => console.log('Error logging out: ', error));
+     signOut(auth)
+     .then(() => console.log("logout success"))
+     .catch(error => console.log('Error logging out: ', error));
+     
    };
 
    useLayoutEffect(() => {
@@ -35,10 +38,10 @@ const  Chat = () =>  {
 
    useLayoutEffect(() => {
 
-       const collectionRef = collection(database, 'chats');
+       const collectionRef =   collection( database, 'chats');
        const q = query(collectionRef, orderBy('createdAt', 'desc'));
 
-   const unsubscribe = onSnapshot(q, querySnapshot => {
+   const unsubscribe =  onSnapshot(q, querySnapshot => {
        console.log('querySnapshot unsusbscribe');
          setMessages(
            querySnapshot.docs.map(doc => ({
@@ -50,7 +53,7 @@ const  Chat = () =>  {
          );
        });
    return unsubscribe;
-     }, []);
+     }, [400]);
 
    const onSend = useCallback((messages = []) => {
        setMessages(previousMessages =>

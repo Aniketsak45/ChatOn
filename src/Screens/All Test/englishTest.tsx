@@ -2,11 +2,14 @@ import React from "react";
 import { View, Text, StyleSheet, Image  } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useEffect, useLayoutEffect } from "react";
+import FontAwesom from "react-native-vector-icons/FontAwesome";
 
 
 
 const EnglishTest =  () => {
-   
+
+
 const englishTest = () => {
 
    console.warn('Hindi Test Started');

@@ -23,7 +23,7 @@ useEffect(() => {
                     width: 40,
                     height: 40,
                     marginRight: 15,
-                    borderRadius:20,
+                    borderRadius:24,
                 }}
             />
         ),
@@ -31,13 +31,31 @@ useEffect(() => {
 }, [navigation]);
 
 return (
+    <View style={styles.container} >
+            
+            <Text style={styles.titleText}>Welcome To ChatOn</Text>
+            <Image
+                source={{ uri: "https://freepngimg.com/thumb/chat/1-2-chat-png-image.png" }}
+                style={{
+                    width: 300,
+                    height: 300,
+                    alignSelf:'center',
+                    borderRadius:10,
+                    
+                }}
+            />
+        
+        
+        
     <View style={styles.container}>
+
         <TouchableOpacity
             onPress={() => navigation.navigate("Chat")}
             style={styles.chatButton}
         >
             <Entypo name="chat" size={24} color={'grey'} />
         </TouchableOpacity>
+    </View>
     </View>
 );
 
@@ -50,7 +68,18 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        backgroundColor: "#333",
+        backgroundColor: "#31548c",
+    },
+    title:{
+    
+        flexDirection:'row-reverse',
+        
+    },
+    titleText:{
+        fontSize:35,
+        color:'white',
+        alignSelf:'center',
+        fontWeight:'800',
     },
     chatButton: {
         backgroundColor: '#f5f5f5',

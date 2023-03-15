@@ -32,14 +32,25 @@ const onHandleLogin = () => {
             < Image style={styles.backImage} source={{uri: "https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }} />
             <View style={styles.whiteSheet}/>
             <SafeAreaView style={styles.form}>
-                <Text style={styles.title}>Log In</Text>
+                <Text style={styles.title}>ChatOn</Text>
+                <Image
+                source={{ uri: "https://freepngimg.com/thumb/chat/1-2-chat-png-image.png" }}
+                style={{
+                    width: 100,
+                    height: 100,
+                    alignSelf:'center',
+                    borderRadius:10,
+                  
+                    
+                }}
+            />
         <TextInput
         style={styles.input}
         placeholder="Enter email"
         autoCapitalize="none"
         keyboardType="email-address"
         textContentType="emailAddress"
-        autoFocus={false}
+        autoFocus={true}
         value={email}
         onChangeText={(text) => setEmail(text)}
       />
@@ -55,7 +66,9 @@ const onHandleLogin = () => {
       />
 
       <TouchableOpacity style={styles.button} onPress={onHandleLogin}>
+      
         <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Log In</Text>
+      
       </TouchableOpacity>
       
       <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
@@ -83,13 +96,14 @@ const onHandleLogin = () => {
     title: {
       fontSize: 36,
       fontWeight: 'bold',
-      color: "orange",
+      color: "white",
       alignSelf: "center",
-      paddingBottom: 24,
+      paddingTop:50,
     },
     input: {
       backgroundColor: "#F6F7FB",
       height: 58,
+      marginTop:10,
       marginBottom: 20,
       fontSize: 16,
       borderRadius: 10,
@@ -121,7 +135,7 @@ const onHandleLogin = () => {
       borderRadius: 10,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 40,
+      marginTop: 60,
     },
   });
 

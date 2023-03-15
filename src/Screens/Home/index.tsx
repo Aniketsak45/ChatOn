@@ -1,10 +1,38 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-
+import { View, Text, StyleSheet, Image, TouchableOpacity,  } from "react-native";
+import { useLayoutEffect, useState } from "react";
+import { auth } from "../../../ChatScreen/config/firebase";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import { signOut } from "firebase/auth";
 
 
 const HomeScreen =  () => {
+
+    const navigation = useNavigation();
+
+    
+        
+ 
+
+
+      useLayoutEffect(() => {
+          navigation.setOptions({
+            headerRight: () => (
+              <TouchableOpacity
+                style={{
+                  marginRight: 10
+                }}
+                onPress={signOut}
+              >
+                <AntDesign name="logout" size={24} color={'grey'} style={{marginRight: 10}}/>
+              </TouchableOpacity>
+            )
+          });
+        }, [navigation]);
+
+
+
 
 
     const Navigation = useNavigation();

@@ -21,7 +21,18 @@ const onHandleSignup = () => {
       < Image style={styles.backImage} source={{uri: "https://images.pexels.com/photos/355288/pexels-photo-355288.jpeg?auto=compress&cs=tinysrgb&w=600" }} />
       <View style={styles.whiteSheet} />
       <SafeAreaView style={styles.form}>
-        <Text style={styles.title}>Sign Up</Text>
+        <Text style={styles.title}>ChatOn</Text>
+        <Image
+                source={{ uri: "https://freepngimg.com/thumb/chat/1-2-chat-png-image.png" }}
+                style={{
+                    width: 100,
+                    height: 100,
+                    alignSelf:'center',
+                    borderRadius:10,
+                  
+                    
+                }}
+            />
          <TextInput
         style={styles.input}
         placeholder="Enter email"
@@ -64,14 +75,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: "orange",
+    color: "#fff",
     alignSelf: "center",
-    paddingBottom: 24,
+    paddingTop: 40,
   },
   input: {
     backgroundColor: "#F6F7FB",
     height: 58,
     marginBottom: 20,
+    marginTop:10,
     fontSize: 16,
     borderRadius: 10,
     padding: 12,
